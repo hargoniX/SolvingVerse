@@ -1,0 +1,12 @@
+[options]
+mode prove
+
+[engines]
+smtbmc
+
+[script]
+read -formal solver.sv
+prep -top solver
+
+[files]
+solver.sv

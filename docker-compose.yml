@@ -1,0 +1,7 @@
+version: "3.8"
+
+services:
+    solvingverse:
+        image: solvingverse
+        volumes:
+            - ./theorem:/solver:z

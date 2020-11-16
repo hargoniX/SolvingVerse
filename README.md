@@ -13,10 +13,12 @@ a few assertions into the modules you'd like to know stuff about. A teacher/tuto
 correct a design of a pupil of their's might consider to write a module
 
 ```verilog
-module test(input_1, output_1);
-    StudentCircuitName test(input_1, output_1);
+module solver(input_1, output_1);
+    input input_1;
+    output output_1;
 
-    assert property(output_1 == something);
+    StudentCircuit test(input_1, output_1);
+    assert property (some_thing == another_thing);
 endmodule
 ```
 
@@ -27,6 +29,13 @@ Afterwards you can simply build the docker container (maybe I will even publish 
 the verification toolchain should be running. Note that if you are building the container from scratch
 for the first time it is going to take a while since it has to build yosys and a few theorem solvers first.
 
+## The example
+The example that's in the respository right now is expected to error for the input `1`. So a `sudo docker-compose up`
+should give you a verification error, pointing to a file that contain a counterexample.
+
+## Reading out counterexamples
+The output of `sby` will indicate where you can find the files that contain the counterexample for your circuit (should
+one be found), you can view them with a program like `gtkwave`.
 
 
 ## Modifying
@@ -34,6 +43,3 @@ Basically the container just runs `sby` against the `theorem/solver.sby` file, i
 just change it.
 
 
-## Future plans
-I am planning on adding something that should be able to print out counterexamples a theorem solver might come up with
-so the user doesn't have to manually search the trace files.
